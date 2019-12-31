@@ -1,137 +1,226 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="ZGY 个人技术博客" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
 
-  
-  <title>什么是ZooKeeper | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="什么是ZooKeeper&amp;emsp;   本文摘抄自：  程序员小灰——什么是ZooKeeper？    —— 第二天 ——                     Zookeeper的数据模型Zookeeper的数据模型是什么样子呢？它很像数据结构当中的树，也很像文件系统的目录。  树是由节点所组成，Zookeeper的数据存储也同样是基于节点，这种节点叫做Znode。 但是，不同于树的节点，Z">
-<meta property="og:type" content="article">
-<meta property="og:title" content="什么是ZooKeeper">
-<meta property="og:url" content="http://yoursite.com/2019/12/31/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="什么是ZooKeeper&amp;emsp;   本文摘抄自：  程序员小灰——什么是ZooKeeper？    —— 第二天 ——                     Zookeeper的数据模型Zookeeper的数据模型是什么样子呢？它很像数据结构当中的树，也很像文件系统的目录。  树是由节点所组成，Zookeeper的数据存储也同样是基于节点，这种节点叫做Znode。 但是，不同于树的节点，Z">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673571208.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673571211.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673571216.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/0.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673571231.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673571236.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673571243.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673571252.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673571259.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673571263.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673571267.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673571275.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673571283.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673571287.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673571295.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673628957.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673628968.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673628973.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673692556.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673692564.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673692568.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673692576.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673692584.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673692592.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673692596.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673692604.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673692613.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673692617.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673692620.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673692628.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673692636.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673692644.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673692651.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673692659.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673692668.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673692672.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673692680.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673740840.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673740844.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673740848.webp">
-<meta property="og:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640-1570673740856.webp">
-<meta property="article:published_time" content="2019-12-31T03:52:49.740Z">
-<meta property="article:modified_time" content="2019-12-31T04:08:38.121Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2019/12/31/img/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper.assets/640.webp">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-<meta name="generator" content="Hexo 4.2.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>什么是ZooKeeper | ZGY 个人技术博客</title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">ZGY 个人技术博客</a></h1>
+        <h2 class="subtitle"></h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
       
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
         
-          <a class="main-nav-link" href="/">Home</a>
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
         
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
+      </ul>
+    </nav>
   </div>
 </header>
-      <div class="outer">
-        <section id="main"><article id="post-什么是ZooKeeper" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/31/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper/" class="article-date">
-  <time datetime="2019-12-31T03:52:49.740Z" itemprop="datePublished">2019-12-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      什么是ZooKeeper
-    </h1>
-  
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <center><h1>什么是ZooKeeper&emsp;</h1></center>
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/31/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="ZGY">
+       <meta itemprop="description" content="">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="ZGY 个人技术博客">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">什么是ZooKeeper</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-12-31T11:52:49+08:00">2019-12-31 11:52:49</time></span>
+        </span>
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <center><h1>什么是ZooKeeper&emsp;</h1></center>
 
 <blockquote>
 <p>本文摘抄自： <a href="https://mp.weixin.qq.com/s?__biz=MzIxMjE5MTE1Nw==&mid=2653193977&idx=1&sn=12319f8cb81f55a40ac461bd0ad9d74e&chksm=8c99f423bbee7d35056ce7ec1b321f33aad15c309de6eba0086cb31a48b975ccb1d695d5a251&mpshare=1&scene=23&srcid=1009q5vbBfA0ssZhVnm61nEd&sharer_sharetime=1570673341100&sharer_shareid=f8be6084b82cc018b018588532bb3fe1#rd" target="_blank" rel="noopener"> 程序员小灰——什么是ZooKeeper？</a></p>
@@ -248,95 +337,138 @@
 <p>1.ZAB协议相对比较复杂，小灰对此也只是浅层次的理解，有兴趣的小伙伴们可以去官方社区进行进一步学习。</p>
 <p><strong>2.本漫画纯属娱乐，还请大家尽量珍惜当下的工作，切勿模仿小灰的行为哦。</strong></p>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/31/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper/" data-id="ck4te8k3d0000vos88e79h7er" class="article-share-link">Share</a>
-      
+    </main>
+    <footer class="post-footer">
       
     </footer>
-  </div>
+  </article>
   
-    
   
-</article>
+  
+</div>
 
-</section>
-        
-          <aside id="sidebar">
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
   
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li></ul>
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
     </div>
   </div>
-
-
+  <div class="search-result-box" id="search-result"></div>
   
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="ZGY">
+  
+  <h1 class="author-name">ZGY</h1>
+  <h2 class="author-description"></h2>
+  <div class="site-count">
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">1</a></div>
+    </div>
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#null"><span class="toc-text">什么是ZooKeeper&amp;emsp;</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#Zookeeper的数据模型"><span class="toc-text">Zookeeper的数据模型</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#Zookeeper的基本操作和事件通知"><span class="toc-text">Zookeeper的基本操作和事件通知</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#Zookeeper的一致性"><span class="toc-text">Zookeeper的一致性</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#Zookeeper的应用"><span class="toc-text">Zookeeper的应用</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
       <ul>
         
-          <li>
-            <a href="/2019/12/31/%E4%BB%80%E4%B9%88%E6%98%AFZooKeeper/">什么是ZooKeeper</a>
-          </li>
+        <li><i class="fas fa-envelope"></i><a href="mailto:youremail@youremailhost" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/" target="_blank">Weibo</a></li>
         
       </ul>
     </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
   </div>
-
-  
 </aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">ZGY</span><span class="year"><i class="far fa-copyright"></i>2019</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
     </div>
   </div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
-</body>
+  </body>
 </html>
