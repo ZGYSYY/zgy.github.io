@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 我不是老司机
-subtitle: 'ZGY 个人博客'
-description: 'ZGY 个人技术博客, Spring、Spring Boot、Spring Cloud 详解, 高并发、秒杀、分布式, 个人笔记'
-keywords: "ZGY 个人技术博客，Spring、Spring Boot、Spring Cloud 详解， 高并发、秒杀、分布式, 个人笔记"
+title: "title"
+subtitle: "subtitle"
+description: 'description'
+keywords: "keywords"
 author: ZGY
 language: zh_CN
 timezone: 'Asia/Shanghai'

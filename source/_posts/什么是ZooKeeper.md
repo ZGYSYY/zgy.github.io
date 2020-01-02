@@ -2,6 +2,11 @@
 title: 什么是ZooKeeper
 date: 2019-12-31 17:48:12
 tags:
+- zookeeper
+- 分布式锁
+- 服务注册与发现
+categories:
+- 后端
 ---
 
 > 本文摘抄自： [ 程序员小灰——什么是ZooKeeper？](https://mp.weixin.qq.com/s?__biz=MzIxMjE5MTE1Nw==&mid=2653193977&idx=1&sn=12319f8cb81f55a40ac461bd0ad9d74e&chksm=8c99f423bbee7d35056ce7ec1b321f33aad15c309de6eba0086cb31a48b975ccb1d695d5a251&mpshare=1&scene=23&srcid=1009q5vbBfA0ssZhVnm61nEd&sharer_sharetime=1570673341100&sharer_shareid=f8be6084b82cc018b018588532bb3fe1#rd)
