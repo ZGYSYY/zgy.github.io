@@ -30,10 +30,20 @@ favicon:
 
 # Must be an array.
 keywords:
-  - ZGY 个人技术博客
-  - Spring、Spring Boot、Spring Cloud 详解
-  - 高并发、秒杀、分布式
-  - 个人笔记
+- ZGYSYY
+- 我不是老司机
+- 后端开发
+- Java技术文章
+- Spring
+- SpringCloud
+- JVM调优
+- 程序员
+- 高并发编程
+- IT网站
+- 分布式
+- 中间件
+- 微服务
+- 个人技术博客
 
 # https://creativecommons.org/licenses/
 # by | by-sa | by-nd | by-nc | by-nc-sa | by-nc-nd

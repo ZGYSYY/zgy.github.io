@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: "title"
-subtitle: "subtitle"
-description: 'description'
-keywords: "keywords"
+title: "我不是老司机"
+subtitle: "I am not an old driver ! "
+description: '不逼逼自己，都不知道自己到底有多LOW！(¬､¬)'
+keywords: "ZGYSYY，我不是老司机，个人技术博客，Java技术文章，前端技术文章，Spring，SpringCloud，JVM调优，程序员，高并发编程，IT网站。"
 author: ZGY
 language: zh_CN
 timezone: 'Asia/Shanghai'
