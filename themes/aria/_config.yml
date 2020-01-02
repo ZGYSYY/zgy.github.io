@@ -176,7 +176,7 @@ comment:
     avatar_force: false
 
 reward:
-  enable: false
+  enable: true
   comment: 坚持原创技术分享，您的支持是我前进的动力！
   # wechatpay_qrcode: images/WeChatPay.png
   # alipay_qrcode: images/AliPay.png
