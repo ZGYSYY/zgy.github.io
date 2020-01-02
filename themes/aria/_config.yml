@@ -7,15 +7,15 @@ menu:
 - name: archives
   link: archives/
   icon: <i class="fas fa-archive"></i>
-# - name: categories
-#   link: categories/
-#   icon: <i class="fas fa-th-list"></i>
-# - name: tags
-#   link: tags/
-#   icon: <i class="fas fa-tags"></i>
-# - name: about
-#   link: about/
-#   icon: <i class="fas fa-user-edit"></i>
+- name: categories
+  link: categories/
+  icon: <i class="fas fa-th-list"></i>
+- name: tags
+  link: tags/
+  icon: <i class="fas fa-tags"></i>
+- name: about
+  link: about/
+  icon: <i class="fas fa-user-edit"></i>
 
 # Transform your image to those favicons in https://realfavicongenerator.net/.
 favicon:
@@ -30,13 +30,14 @@ favicon:
 
 # Must be an array.
 keywords:
-  - Life
-  - ARIA
-  - Hexo
+  - ZGY 个人技术博客
+  - Spring、Spring Boot、Spring Cloud 详解
+  - 高并发、秒杀、分布式
+  - 个人笔记
 
 # https://creativecommons.org/licenses/
 # by | by-sa | by-nd | by-nc | by-nc-sa | by-nc-nd
-creative_commons:
+creative_commons: by-nc-nd
 
 # Available: atom-one-dark | atom-one-light | solarized-dark | solarized-light
 highlight: atom-one-dark
@@ -65,15 +66,15 @@ color: "#33363b"
 
 google_verification:
 
-since:
+since: 2019年12月31日
 
 search: true
 
 # `left`, `right`, `false`
-sidebar: left
+sidebar: right
 
 # Animation in Home, Archive, Category and Tag.
-animate: false
+animate: true
 
 busuanzi: true
 
@@ -127,17 +128,17 @@ social:
   enable: true
   links:
     - name: E-Mail
-      link: mailto:youremail@youremailhost
+      link: mailto:3030392760@qq.com
       icon: <i class="fas fa-envelope"></i>
     - name: GitHub
-      link: https://github.com/
+      link: https://github.com/zgysyy
       icon: <i class="fab fa-github"></i>
-    - name: Weibo
-      link: https://weibo.com/
-      icon: <i class="fab fa-weibo"></i>
+#    - name: Weibo
+#      link: https://weibo.com/
+#      icon: <i class="fab fa-weibo"></i>
 
 blogroll:
-  enable: true
+  enable: false
   links:
     - name: GitHub
       link: https://github.com/
@@ -175,7 +176,7 @@ comment:
     avatar_force: false
 
 reward:
-  enable: false
+  enable: true
   comment: 坚持原创技术分享，您的支持是我前进的动力！
   # wechatpay_qrcode: images/WeChatPay.png
   # alipay_qrcode: images/AliPay.png
