@@ -53,6 +53,26 @@
         margin-right: 0.3em;
       }
     }
+    .tags-cloud {
+      text-align: center;
+    }
+    .post-tag {
+      margin: 0.1em 0.5em;
+      display: inline-block;
+      background: #9f1313;
+      border: 0.1em solid #f5c6cb;
+      padding: 0.15em;
+      line-height: 1.2em;
+      font-size: 1em;
+      &:nth-child(2n) {
+          background: #237f23;
+          border: 0.1em solid #c3e6cb;
+      }
+      &:nth-child(3n) {
+        background: #2356af;
+        border: 0.1em solid #b8daff;
+      }
+    }
   }
   .post-footer {
     text-align: center;
