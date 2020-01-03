@@ -6,7 +6,6 @@ tags:
 - 高效队列
 - 伪共享
 - CAS
-- 环形队列
 - DSL
 - MESI 协议
 categories:
