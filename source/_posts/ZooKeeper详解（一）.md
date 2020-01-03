@@ -6,6 +6,7 @@ tags:
 categories:
 - 后端
 - Java
+- Zookeeper
 ---
 
 作为分布式系统解决方案的 ZooKeeper，被广泛应用于多个分布式场景。例如：数据发布/订阅，负载均衡，命名服务，集群管理等等。
