@@ -108,7 +108,7 @@ ZooKeeper 客户端创建 Watcher 的实例对象：
 
 {% asset_img 640-1577091904111.webp 两个 Client 竞争一个资源 %}
 
-因此引入 ZNode 版本（Version）概念。版本是用来保证分布式数据原子性操作的。﻿
+因此引入 ZNode 版本（Version）概念。版本是用来保证分布式数据原子性操作的。
 ZNode 的版本（Version）信息保存在 ZNode 的 Stat 对象中。有如下三种：
 
 {% asset_img 640-1577091934877.webp %}
