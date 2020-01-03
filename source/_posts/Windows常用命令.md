@@ -17,6 +17,8 @@ categories:
 xcopy .\my-shop D:\Temp\my-shop /Y /E /H /EXCLUDE:EXCLUDE.txt
 ```
 
+<!-- more -->
+
 参数解释
 
 /Y： 禁止提示以确认改写一个现存目标文件。 
