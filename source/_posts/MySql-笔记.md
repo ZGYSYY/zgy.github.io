@@ -33,6 +33,8 @@ GRANT ALL PRIVILEGES ON 数据库名称.* TO 'username'@'localhost';
 DROP user 'usernaem'@'localhost';
 ```
 
+<!-- more -->
+
 **MySql中@ 和 @@的区别**
 
 @x 是 用户自定义的变量 (User variables are written as @var_name)。
