@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="ZGYSYY, 我不是老司机, 后端开发, Java技术文章, Spring, SpringCloud, JVM调优, 程序员, 高并发编程, IT网站, 分布式, 中间件, 微服务, 个人技术博客">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="我不是老司机" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>ZooKeeper详解（一） | 我不是老司机 - I am not an old driver ! </title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">我不是老司机</a></h1>
+        <h2 class="subtitle">I am not an old driver ! </h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
+        
+        <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">关于</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="https://zgysyy.github.io/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="ZGY">
+       <meta itemprop="description" content="不逼逼自己，都不知道自己到底有多LOW！(¬､¬)">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="我不是老司机">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">ZooKeeper详解（一）</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-01-03T13:45:58+08:00">2020-01-03 13:45:58</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%90%8E%E7%AB%AF/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%90%8E%E7%AB%AF/Java/Zookeeper/" itemprop="url" rel="index"><span itemprop="name">Zookeeper</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>作为分布式系统解决方案的 ZooKeeper，被广泛应用于多个分布式场景。例如：数据发布/订阅，负载均衡，命名服务，集群管理等等。<br>因此，ZooKeeper 在分布式系统中扮演着重要的角色，今天通过一个简单的例子来看看它的实现原理。</p>
+<a id="more"></a>
+
+<h1 id="从一个简单的例子开始"><a href="#从一个简单的例子开始" class="headerlink" title="从一个简单的例子开始"></a>从一个简单的例子开始</h1><p>在分布式系统中经常会遇到这种情况，多个应用读取同一个配置。例如：A，B 两个应用都会读取配置 C 中的内容，一旦 C 中的内容出现变化，会通知 A 和 B。<br>一般的做法是在 A，B 中按照时钟频率询问 C 的变化，或者使用观察者模式来监听 C 的变化，发现变化以后再更新 A 和 B。那么 ZooKeeper 如何协调这种场景？<br>ZooKeeper 会建立一个 ZooKeeper 服务器，暂且称为 ZServer，用它来存放 C 的值。为 A，B 两个应用分别生成两个客户端，称作 ClientA 和 ClientB。<br>这两个客户端连接到 ZooKeeper 的服务器，并获取其中存放的 C。保存 C 值的地方在 ZooKeeper 服务端（Server）中称为 ZNode。</p>
+<img src="/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/640.webp" class="" title="ClientA 和 ClientB 通过 ZooKeeper Server 获取 C 的值">
+
+<h1 id="ZNode"><a href="#ZNode" class="headerlink" title="ZNode"></a>ZNode</h1><p>通过上面的例子，客户端 ClientA 和 ClientB 需要读取 C 的内容。这个 C 就作为树的叶子节点存放在 ZooKeeper 的 ZNode 中。<br>通常来说，为了提高效率 ZNode 是被存放在内存中的。ZNode 的数据模型是一棵树（ZNode Tree）。<br>好像我们从上图中看到的一样，树中的每个节点都可以存放数据，并且每个节点下面都可以存放叶子节点。<br>ZooKeeper 客户端通过 “/” 作为访问路径，访问数据。例如可以通过路径 “/RootNode/C” 来访问 C 变量。</p>
+<p><strong>为了方便客户端调用，ZooKeeper 会暴露一些命令：</strong></p>
+<img src="/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/640-1577091644284.webp" class="">
+
+<p><strong>作为存储媒介来说，ZNode分为持久节点和临时节点：</strong></p>
+<p>持久节点（PERSISTENT），该数据节点被创建后，就一直存在于 ZooKeeper 服务器上，除非删除操作（delete）清除该节点。<br>临时节点（EPHEMERAL），该数据节点的生命周期会和客户端（Client）会话（Session）绑定在一起。如果客户端（Client）会话丢失了，那么节点就自动清除掉。<br>如果把临时节点看成资源的话，当客户端和服务端产生会话并生成临时节点，一旦客户端与服务器中断联系，节点资源会被从 ZNode 中删除。<br>顺序节点（SEQUENTIAL），ZNode 节点被分配唯一个单调递增的整数。例如多个客户端在服务器 /tasks 上申请节点时，根据客户端申请的先后顺序，将数字追加到 /tasks/task 后面。<br>如果有三个客户端申请节点资源，那么在 /tasks 下面建立三个顺序节点，分别是 /tasks/task1，/tasks/task2，/tasks/task3。<br>顺序节点，在处理分布式事务的时候非常有帮助，当多个客户端（Client）协作工作的时候，会按照一定的顺序执行。<br>如果将上面的两类节点和顺序节点进行组合的话，就有四种节点类型，分别是持久节点，持久顺序节点，临时节点，临时顺序节点。</p>
+<h1 id="Watcher"><a href="#Watcher" class="headerlink" title="Watcher"></a>Watcher</h1><p>上面说了 ZooKeeper 用来存放数据的 ZNode，并且把 C 的值存储在里面。如果 C 被更新了，两个客户端（ClientA、ClientB）如何获得通知呢？<br>ZooKeeper 客户端（Client）会在指定的节点（/RootNote/C）上注册一个 Watcher，ZNode 上的 C 被更新的时候，服务端就会通知 ClientA 和 ClientB。</p>
+<p><strong>通过三步来实现：</strong></p>
+<ol>
+<li>客户端注册 Watcher</li>
+<li>服务端处理 Watcher</li>
+<li>客户端回调 Watcher</li>
+</ol>
+<img src="/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/640-1577091748758.webp" class="">
+
+<p><strong>①客户端注册 Watcher</strong></p>
+<p>ZooKeeper 客户端创建 Watcher 的实例对象：</p>
+<img src="/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/640-1577091773626.webp" class="">
+
+<p>同时这个 Watcher 会保存在客户端本地，一直作为和服务端会话的 Watcher。</p>
+<img src="/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/640-1577091784988.webp" class="">
+
+<p>客户端可以通过 getData，getChildren 和 exist 方法来向服务端注册 Watcher。</p>
+<img src="/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/640-1577091795841.webp" class="">
+
+<p>同时需要注意的是在客户端发送 Watcher 到服务端注册的时候，会将这个要发送的 Watcher 在本地的 ZKWatchManager 中保存。<br>这样做的好处，就是当获得服务端的注册成功的信息以后，就不用将 Watcher 的具体内容回传给客户端了。<br>客户端只用在接到服务端响应以后，从本地的 ZKWatchManager 中获取 Watch 的信息进行处理即可。</p>
+<p><strong>②服务端处理 Watcher</strong></p>
+<p>服务端收到客户端的请求以后，交给 FinalRequestProcessor 处理，这个进程会去 ZNode 中获取对应的数据，同时会把 Watch 加入到 WatchManager 中。<br>这样下次这节点上的数据被更改了以后，就会通知注册 Watch 的客户端了。</p>
+<img src="/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/640-1577091832270.webp" class="">
+
+<p><strong>③客户端回调 Watcher</strong></p>
+<p>客户端在响应客户端 Watcher 注册以后，会发送 WathcerEvent 事件。作为客户端有对应的回调函数接受这个消息。<br>这里会通过 readResponse 方法统一处理：</p>
+<img src="/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/640-1577091859389.webp" class="">
+
+<p>在 SendTread 接受到服务端的通知以后，会将事件通过 EventThread.queueEvent 发送给 EventThread。<br>正如前面提到的，在客户端注册时，已经将 Watcher 的具体内容保存在 ZKWatchManager 一样了。<br>所以，EventTread 通过 EventType 就可以知道哪个 Watcher 被响应了（数据变化了）。<br>然后从 ZKWatchManager 取出具体 Watch 放到 waitingEvent 队列等待处理。<br>最后，由 EventThread 中的 processEvent 方法依次处理数据更新的响应。</p>
+<img src="/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/640-1577091873098.webp" class="">
+
+<h1 id="版本（Version）"><a href="#版本（Version）" class="headerlink" title="版本（Version）"></a>版本（Version）</h1><p>介绍完了 Watcher 机制，回头再来谈谈 ZNode 的版本（Version）。如果有一个客户端（ClientD），它尝试修改 C 的值，此时其他两个客户端会收到通知，并且进行后续的业务处理了。</p>
+<img src="/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/640-1577091892704.webp" class="">
+
+<p>那么在分布式系统中，会出现这么一种情况：在 ClientD 对 C 进行写入操作的时候，又有一个 ClientE 也对 C 进行写入操作。这两个 Client 会去竞争 C 资源，通常这种情况需要对 C 进行加锁操作。</p>
+<img src="/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/640-1577091904111.webp" class="" title="两个 Client 竞争一个资源">
+
+<p>因此引入 ZNode 版本（Version）概念。版本是用来保证分布式数据原子性操作的。<br>ZNode 的版本（Version）信息保存在 ZNode 的 Stat 对象中。有如下三种：</p>
+<img src="/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/640-1577091934877.webp" class="">
+
+<p>本例只关注“数据节点内容的版本号”，也就是 Version。<br>如果说 ClientD 和 ClientE 对 C 进行写入操作视作是一个事务的话。在执行写入操作之前，两个事务分别会获取节点上的值，即节点保存的数据和节点的版本号（Version）。<br>以乐观锁为例，对数据的写入会分成以下三个阶段：数据读取，写入校验和数据写入。例如 C 上的数据是 1， Version 是 0。<br>此时 ClientD 和 ClientE 都获取了这些信息。假设 ClientD 先做写入操作，在做写入校验的时候，发现之前获得的 Version 和节点上的 Version 是相同的，都是 1，因此直接执行数据写入。<br>写入以后，Version 由原来的 1 变成了 2。当 ClientE 做写入校验时，发现自己持有的 Version=1 和节点当前的 Version=2，不一样。于是，写入失败，重新获取 Version 和节点数据，再次尝试写入。<br>除了上述方案以外，还可以利用 ZNode 的有序性。在 C 下面建立多个有序的子节点。每当一个 Client 准备写入数据的时候，创建一个临时有序的节点。<br>节点的顺序根据 FIFO 算法，保证先申请写入的 Client 排在其前面。每个节点都有一个序号，后面申请的节点按照序号依次递增。</p>
+<img src="/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/640-1577091959155.webp" class="" title="ClientD，ClientE 分别建立子 ZNode">
+
+<p>每个 Client 在执行修改 C 操作的时候，都要检查有没有比自己序号小的节点，如果存在那么就进入等待。<br>直到比自己序号小的节点进行完毕以后，才轮到自己执行修改操作。从而保证了事物处理的顺序性。</p>
+<h1 id="会话（Session）"><a href="#会话（Session）" class="headerlink" title="会话（Session）"></a>会话（Session）</h1><p>说完版本（Version）的概念，例子从原来的 ClientAB 已经扩充到了 ClientDE。这些客户端都会和 ZooKeeper 的服务端进行通信，或读取数据或修改数据。<br>我们将客户端与服务端完成的这种连接称为会话。ZooKeeper 的会话有 Connecting，Connected，Reconnecting，Reconnected 和 Close 这几种状态。<br>并且在服务端由专门的进程来管理他们，客户端初始化的时候就会根据配置自动连接服务器，从而建立会话，客户端连接服务器时会话处于 Connecting 状态。<br>一旦连接完成，就会进入 Connected 状态。如果出现延迟或者短暂失联，客户端会自动重连，Reconnecting 和 Reconnected 状态也就应运而生。<br>如果长时间超时，或者客户端断开服务器，ZooKeeper 会清理掉会话，以及该会话创建的临时数据节点，并且关闭和客户端的连接。</p>
+<p><strong>Session 作为会话实体，用来代表客户端会话，其包括 4 个属性：</strong></p>
+<ul>
+<li>SessionID，用来全局唯一识别会话。</li>
+<li>TimeOut，会话超时事件。客户端在创造 Session 实例的时候，会设置一个会话超时的时间。</li>
+<li>TickTime，下次会话超时时间点。后面“分桶策略”会用到。</li>
+<li>isClosing，当服务端如果检测到会话超时失效了，会通过设置这个属性将会话关闭。</li>
+</ul>
+<p>既然，会话是客户端与服务器之间的连接。在服务器端由 SessionTracker 管理会话。<br>SessionTracker 有一个工作就是，将超时的会话清除掉。于是“分桶策略”就登场了。<br>由于每个会话在生成的时候都会定义超时时间，通过当前时间+超时时间可以算出会话的过期时间。<br>由于 SessionTracker 不是实时监听会话超时，它是按照一定时间周期来监听的。<br>也就是说，如果没有到达 SessionTracker 的检查时间周期，即使有会话过期，SessionTracker 也不会去清除。由此，就引入会话超时计算公式，也就是 TickTime 的计算公式。</p>
+<p><b>TickTime=（（当前时间+会话过期时间）/检查时间间隔+1）* 检查时间间隔。</b></p>
+<p>将这个值计算出来以后，SessionTracker 会把对应的会话按照这个时间放在对应的时间轴上面。SessionTracker 在对应的 TickTime 检查会话是否过期。</p>
+<img src="/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/640-1577092047238.webp" class="">
+
+<p>每当客户端连接上服务器都会做激活操作，同时每隔一段时间客户端会向服务器发送心跳检测。<br>服务器收到激活或者心跳检测以后，会重新计算会话过期时间，根据“分桶策略”进行重新调整。把会话从“老的区块“放到”新的区块“中去。</p>
+<img src="/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/640-1577092069240.webp" class="" title="重新计算过期时间并且调整“分桶策略”">
+
+<p><strong>对于超时的会话，SessionTracker 也会做如下清理工作：</strong></p>
+<ul>
+<li>标记会话状态为“已关闭”，也就是设置 isClosing 为 True。</li>
+<li>发起“会话关闭”的请求，让关闭操作在整个集群生效。</li>
+<li>收集需要清理的临时节点。</li>
+<li>添加“节点删除”的事务变更。</li>
+<li>删除临时节点</li>
+<li>移除会话</li>
+<li>关闭客户端与服务端的连接<br>会话关闭以后客户端就无法从服务端获取/写入数据了。</li>
+</ul>
+<h1 id="服务群组（Leader，Follower，Observer）"><a href="#服务群组（Leader，Follower，Observer）" class="headerlink" title="服务群组（Leader，Follower，Observer）"></a>服务群组（Leader，Follower，Observer）</h1><p>前面提到了客户端如何通过会话与服务端保持联系，以及服务端是如何管理客户端会话（Session）的。<br>我们继续思考一下，这么多的服务端都依赖一个 ZooKeeper 服务器。一旦服务挂了，客户端就无法工作了。<br>为了提高 ZooKeeper 服务的可靠性，引入服务器集群的概念。从原来的单个服务器，扩充成多个服务器，即使某一台服务器挂了，其他的服务器也可以顶上来。</p>
+<img src="/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/640-1577092132249.webp" class="" title="ZooKeeper 的服务器集群">
+
+<p>这样看起来不错了，新的问题是，存在多个 ZooKeeper 服务器，那么客户端的请求发给哪台呢？服务器之间如何同步数据呢？如果一个服务挂掉了其他的服务器如何替代？这里介绍两个概念 Leader 和 Follower。<br>Leader 服务器，是事务请求（写操作）的唯一调度者和处理者，保证集群事务处理的顺序性。也是集群内部服务器的调度者。<br>它是整个集群的老大，其他的服务器接到事务请求都会转交给它，让它协调处理。<br>Follower 服务器，处理非事务请求（读操作），转发事务请求给 Leader 服务器。参与选举 Leader 的投票和事务请求 Proposal 的投票。<br>既然 Leader 是集群的老大，那么这个老大是如何产生的。ZooKeeper 有仲裁机制，通过服务器的选举产生这个 Leader，按照少数服从多数的原则。<br>因此，集群中服务器的个数一般都是奇数，例如：1，3，5。当然这里是建议。关于选举和仲裁都有一定的算法，一起来看看吧。<br>当众多服务器启动的时候，互相都不知道谁是 Leader，因此都会进入 Looking 状态，也就是在网络中寻找 Leader。<br>寻找的过程也是投票的过程，每个服务器会将服务器 ID 和事务 ID 作为投票信息发送给网络中其他的服务器。假设称它为投票信息 VOTE，它包括：（ServerID，ZXID）。</p>
+<p>其中，ServerID 是服务器注册的 ID，随着服务器启动的顺序自动增加，后启动的服务器 ServerID 就大；ZXID 是服务器处理事物的 ID，随着事物的增加自动增加，同样后提交的事务 ZXID 也大一些。<br>其他的服务器收到 VOTE 信息以后会和自己的 VOTE 信息（ServerID，ZXID）进行比较。<br>如果收到的 VOTE（ServerID，ZXID）中的 ZXID 比自己的 ZXID 要大，那么把自己的 VOTE 修改成收到的 VOTE。<br>如果 ZXID 一样大，那么就比较 ServerID，将大的那个 ServerID 作为自己 VOTE 的 ServerID，转发给其他服务器。</p>
+<p>再简单点说，如果事务 ID（ZXID）比自己的事务 ID（ZXID）要大，就把票投给这个服务器。如果事务 ID 一样，就把票投给 ServerID 大的服务器。</p>
+<p><strong>来个具体的例子，有三个服务器，他们的投票值分别是：</strong></p>
+<ul>
+<li><p>S1 (1，6)</p>
+</li>
+<li><p>S2 (2，5)</p>
+</li>
+<li><p>S3 (3，5)</p>
+</li>
+</ul>
+<p>三个服务器分别把自己的 VOTE 发给其他两台服务器，S2 和 S3 收到 VOTE 以后发现 ZXID 为 6 的来自 S1 的 VOTE 比自己持有的 ZXID 要大，因此把自己的 VOTE 修改为（1，6）投出去，因此 S1 称为 Leader。</p>
+<img src="/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/640-1577092179972.webp" class="" title="Leader 选举实例">
+
+<p>同样，如果 S1 作为 Leader，因为某种原因挂掉或者长时间没有响应请求，其他的服务器也会进入 Looking 状态，开启投票仲裁模式寻找下一个 Leader。<br>成为新 Leader 以后会通过广播的方式将 ZNode 上的数据同步到其他的 Follower。<br>Leader 有了，整个服务器集群有了领袖，它可以处理客户端的事物请求。客户端的请求可以发给集群中任意一台服务器，无论是哪个服务器都会将事物请求转交给 Leader。<br>Leader 在将数据写入 ZNode 之前会向 ZooKeeper 的其他 Follower 进行广播。<br>这里广播用到了 ZAB 协议（Atomic Broadcast Protocol）是 Paxos 协议的实践。说白了就是一个两段提交。</p>
+<p>PS：对分布式事务比较了解的同学应该知道两段提交和三段提交。</p>
+<p><strong>这里 ZooKeeper 通过以下方式实现两段提交：</strong></p>
+<ul>
+<li>Leader 向所有 Follower 发送一个 PROPOSAL。</li>
+<li>当 Follower 接收到 PROPOSAL 后，返回给 Leader 一个 ACK 消息，表示我收到 PROPOSAL，并且准备好了。</li>
+<li>Leader 仲裁数量（过半数）的 Follower 发送的 ACK 后（包括 Leader 自己），会发送消息通知 Follower 进行 COMMIT。</li>
+<li>收到 COMMIT 以后，Follower 就开始干活，将数据写入到 ZNode 中。</li>
+</ul>
+<img src="/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/640-1577092225305.webp" class="" title="ZAB 广播 PROPOSAL">
+
+<p>选举了 Leader 领导集群，Leader 接受到 Client 的请求以后，也可以协调 Follower 工作了。</p>
+<img src="/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/640-1577092240964.webp" class="">
+
+<p>那么如果 Client 很多的情况下，特别是这些客户端都是做读操作的时候，ZooKeeper 服务器如何处理如此多的请求呢？这里引入 Observer 的概念。<br>Observer 和 Follower 基本一致，对于非事务请求（读操作），可以直接返回节点中的信息（数据从 Leader 中同步过来的）。<br>对于事务请求（写操作），会转交给 Leader 做统一处理。Observer 的存在就是为了解决大量客户端读请求。<br>Observer 和 Follower 的区别是，Observer 不参与仲裁投票，选举 Leader。</p>
+<img src="/2020/01/03/ZooKeeper%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%80%EF%BC%89/640-1577092253737.webp" class="" title="Observer 加入 Leader 和 Follower 大家庭">
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>全文用了一个简单的例子讲 ZooKeeper 的主要特性和实现原理，最后做个总结。<br>ZooKeeper 被用来协调和管理分布式系统，发挥着重要的作用。分布式系统由于其特性，应用分布在不同的物理主机或者网络中。<br>为了让它们协同工作，ZooKeeper 中的 ZNode 成为统一协调的重要部分，客户端通过 Client 间接到服务端的 ZNode 上，监听 ZNode 数据的变化。<br>同时 ZNode 支持的持久，临时和顺序性，以及版本（Version）控制，这些特性支持了分布式事务和锁的功能。<br>如果说，每一个 ZooKeeperClient 对 Server 的写入操作都是一次事务的话，ZooKeeper 服务端维护了大量的事务，并且通过“分桶策略”来管理它们，保证了 Client 与 Server 端协调工作。</p>
+<p>为了提高 Server 的可靠性，ZooKeeper 引入了 Server 集群的概念。通过仲裁机制选举 Leader 来领导其他 Follower。<br>事物都由 Leader 来处理，通过两段提交的方式对其他 Server 发起广播。为了增强对非事务请求的处理效率，ZooKeeper 加入了 Observer 来帮忙。</p>
+<p>ZooKeeper 包含的内容远不止上面说的这些，由于篇幅的原因无法一一道来。<br>为了方便大家理解，文中将一些原理做了简化处理，希望有机会和大家做深入的探讨，咱们下次见。</p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/Zookeeper/" rel="tag"><i class="fas fa-tags"></i>Zookeeper</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2020/01/03/MySql-%E7%AC%94%E8%AE%B0/" rel="next" title="MySql 笔记"><i class="fas fa-angle-left"></i><span class="nav-title">MySql 笔记</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2020/01/08/Java-%E4%B8%AD%E4%BD%BF%E7%94%A8-Zookeeper-%E5%AE%A2%E6%88%B7%E7%AB%AF-Curator-%E8%AF%A6%E8%A7%A3/" rel="prev" title="Java 中使用 Zookeeper 客户端 Curator 详解"><span class="nav-title">Java 中使用 Zookeeper 客户端 Curator 详解</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="ZGY">
+  
+  <h1 class="author-name">ZGY</h1>
+  <h2 class="author-description">不逼逼自己，都不知道自己到底有多LOW！(¬､¬)</h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">16</a></div>
+    </div>
+    
+    
+    
+    <div class="categories-count count-block">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">13</a></div>
+    </div>
+    
+    
+    
+    <div class="tags-count count-block">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">24</a></div>
+    </div>
+    
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#从一个简单的例子开始"><span class="toc-text">从一个简单的例子开始</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#ZNode"><span class="toc-text">ZNode</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#Watcher"><span class="toc-text">Watcher</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#版本（Version）"><span class="toc-text">版本（Version）</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#会话（Session）"><span class="toc-text">会话（Session）</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#服务群组（Leader，Follower，Observer）"><span class="toc-text">服务群组（Leader，Follower，Observer）</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:3030392760@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/zgysyy" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">ZGY</span><span class="year"><i class="far fa-copyright"></i>2019年12月31日 - 2020</span><span class="creative-commons"><i class="fab fa-creative-commons"></i><a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">BY-NC-ND 4.0</a></span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

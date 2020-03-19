@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="ZGYSYY, 我不是老司机, 后端开发, Java技术文章, Spring, SpringCloud, JVM调优, 程序员, 高并发编程, IT网站, 分布式, 中间件, 微服务, 个人技术博客">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="我不是老司机" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>TCP三次握手和四次挥手详解 | 我不是老司机 - I am not an old driver ! </title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">我不是老司机</a></h1>
+        <h2 class="subtitle">I am not an old driver ! </h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
+        
+        <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">关于</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="https://zgysyy.github.io/2020/01/02/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%AF%A6%E8%A7%A3/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="ZGY">
+       <meta itemprop="description" content="不逼逼自己，都不知道自己到底有多LOW！(¬､¬)">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="我不是老司机">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">TCP三次握手和四次挥手详解</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-01-02T21:28:23+08:00">2020-01-02 21:28:23</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%90%8E%E7%AB%AF/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <blockquote>
+<p>TCP 三次握手和四次挥手的问题在面试中是最为常见的考点之一。很多读者都知道三次和四次，但是如果问深入一点，他们往往都无法作出准确回答。 </p>
+</blockquote>
+<h1 id="TCP-三次握手"><a href="#TCP-三次握手" class="headerlink" title="TCP 三次握手"></a>TCP 三次握手</h1><p> TCP 三次握手就好比两个人在街上隔着 50 米看见了对方，但是因为雾霾等原因不能 100% 确认，所以要通过招手的方式相互确定对方是否认识自己。 </p>
+ <img src="/2020/01/02/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%AF%A6%E8%A7%A3/640.gif" class="">
+
+<p>张三首先向李四招手(syn)，李四看到张三向自己招手后，向对方点了点头挤出了一个微笑(ack)。</p>
+<p>张三看到李四微笑后确认了李四成功辨认出了自己(进入 estalished 状态)。</p>
+<p>但是李四还有点狐疑，向四周看了一看，有没有可能张三是在看别人呢，他也需要确认一下。</p>
+<p>所以李四也向张三招了招手(syn)，张三看到李四向自己招手后知道对方是在寻求自己的确认。</p>
+<p>于是也点了点头挤出了微笑(ack)，李四看到对方的微笑后确认了张三就是在向自己打招呼(进入 established 状态)。</p>
+<p>于是两人加快步伐，走到了一起，相互拥抱。 </p>
+<a id="more"></a>
+
+ <img src="/2020/01/02/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%AF%A6%E8%A7%A3/640-1571975130958.gif" class="">
+
+<p> 我们看到这个过程中一共是如下四个动作： </p>
+<ul>
+<li><p><strong>张三招手</strong></p>
+</li>
+<li><p><strong>李四点头微笑</strong></p>
+</li>
+<li><p><strong>李四招手</strong></p>
+</li>
+<li><p><strong>张三点头微笑</strong></p>
+<p>其中李四连续进行了 2 个动作，先是点头微笑(回复对方)，然后再次招手(寻求确认)，实际上可以将这两个动作合一，招手的同时点头和微笑(syn+ack)。</p>
+</li>
+</ul>
+<p>于是四个动作就简化成了三个动作，张三招手→李四点头微笑并招手→张三点头微笑。这就是三次握手的本质，中间的一次动作是两个动作的合并。</p>
+<p>我们看到有两个中间状态，syn_sent 和 syn_rcvd，<strong>这两个状态叫做 「半打开」 状态</strong> ，就是向对方招手了，但是还没来得及看到对方的点头微笑。</p>
+<p>syn_sent 是主动打开方的 <strong>「半打开」</strong> 状态，syn_rcvd 是被动打开方的 <strong>「半打开」</strong> 状态。客户端是主动打开方，服务器是被动打开方。</p>
+<ul>
+<li><strong>syn_sent：</strong> syn package has been sent</li>
+<li><strong>syn_rcvd：</strong> syn package has been received</li>
+</ul>
+<h1 id="TCP-数据传输"><a href="#TCP-数据传输" class="headerlink" title="TCP 数据传输"></a>TCP 数据传输</h1><p> TCP 数据传输就是两个人隔空对话，差了一点距离，所以需要对方反复确认听见了自己的话。 </p>
+ <img src="/2020/01/02/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%AF%A6%E8%A7%A3/640-1571975188640.gif" class="">
+
+<p>张三喊了一句话(data)，李四听见了之后要向张三回复自己听见了(ack)。</p>
+<p>如果张三喊了一句，半天没听到李四回复，张三就认为自己的话被大风吹走了，李四没听见，所以需要重新喊话，这就是 TCP 重传。</p>
+<p>也有可能是李四听到了张三的话，但是李四向张三的回复被大风吹走了，以至于张三没听见李四的回复。</p>
+<p>张三并不能判断究竟是自己的话被大风吹走了还是李四的回复被大风吹走了，张三也不用管，重传一下就是。</p>
+<p>既然会重传，李四就有可能同一句话听见了两次，这就是 <strong>「去重」</strong> 。 <strong>「重传」</strong> 和 <strong>「去重」</strong> 工作在操作系统的网络内核模块都已经帮我们处理好了，用户层是不用关心的。 </p>
+ <img src="/2020/01/02/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%AF%A6%E8%A7%A3/640-1571975208914.gif" class="">
+
+<p>张三可以向李四喊话，同样李四也可以向张三喊话，因为 TCP 链接是 <strong>「双工的」</strong> ，双方都可以主动发起数据传输。</p>
+<p>不过无论是哪方喊话，都需要收到对方的确认才能认为对方收到了自己的喊话。</p>
+<p>张三可能是个高射炮，一连说了八句话，这时候李四可以不用一句一句回复，而是连续听了这八句话之后，一起向对方回复说前面你说的八句话我都听见了，这就是批量 ACK。</p>
+<p>但是张三也不能一次性说太多话，李四的脑子短时间可能无法消化太多，两人之间需要有协商好的合适的发送和接受速率，这个就是 <strong>「TCP 窗口大小」</strong> 。</p>
+<p>网络环境的数据交互同人类之间的对话还要复杂一些，它存在数据包乱序的现象。</p>
+<p>同一个来源发出来的不同数据包在 <strong>「网际路由」</strong> 上可能会走过不同的路径，最终达到同一个地方时，顺序就不一样了。</p>
+<p>操作系统的网络内核模块会负责对数据包进行排序，到用户层时顺序就已经完全一致了。 </p>
+<h1 id="TCP-四次挥手"><a href="#TCP-四次挥手" class="headerlink" title="TCP 四次挥手"></a>TCP 四次挥手</h1><p>TCP 断开链接的过程和建立链接的过程比较类似，只不过中间的两步并不总是会合成一步走。</p>
+<p>所以它分成了如下 4 个动作：</p>
+<ul>
+<li><p><strong>张三挥手(fin)</strong></p>
+</li>
+<li><p><strong>李四伤感地微笑(ack)</strong></p>
+</li>
+<li><p><strong>李四挥手(fin)</strong></p>
+</li>
+<li><p><strong>张三伤感地微笑(ack)</strong></p>
+<img src="/2020/01/02/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%AF%A6%E8%A7%A3/640-1571975246059.gif" class="">
+
+</li>
+</ul>
+<p>之所以中间的两个动作没有合并，是因为 TCP 存在 <strong>「半关闭」</strong> 状态，也就是单向关闭。</p>
+<p>张三已经挥了手，可是人还没有走，只是不再说话，但是耳朵还是可以继续听，李四呢继续喊话。</p>
+<p>等待李四累了，也不再说话了，朝张三挥了挥手，张三伤感地微笑了一下，才彻底结束了。 </p>
+ <img src="/2020/01/02/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E8%AF%A6%E8%A7%A3/640-1571975259924.gif" class="">
+
+<p>上面有一个非常特殊的状态 time_wait，它是主动关闭的一方在回复完对方的挥手后进入的一个长期状态。</p>
+<p>这个状态标准的持续时间是 4 分钟，4 分钟后才会进入到 Closed 状态，释放套接字资源。不过在具体实现上这个时间是可以调整的。</p>
+<p>它就好比主动分手方要承担的责任，是你提出的要分手，你得付出代价。这个后果就是持续 4 分钟的 time_wait 状态，不能释放套接字资源(端口)，就好比守寡期，这段时间内套接字资源(端口)不得回收利用。</p>
+<p>它的作用是重传最后一个 ack 报文，确保对方可以收到。因为如果对方没有收到 ack 的话，会重传 fin 报文，处于 time_wait 状态的套接字会立即向对方重发 ack 报文。</p>
+<p>同时在这段时间内，该链接在对话期间于网际路由上产生的残留报文(因为路径过于崎岖，数据报文走的时间太长，重传的报文都收到了，原始报文还在路上)传过来时，都会被立即丢弃掉。</p>
+<p>4 分钟的时间足以使得这些残留报文彻底消逝。不然，当新的端口被重复利用时，这些残留报文可能会干扰新的链接。</p>
+<p>4 分钟就是 2 个 MSL，每个 MSL 是 2 分钟。MSL 就是 Maximum Segment Lifetime——最长报文寿命。</p>
+<p>这个时间是由官方 RFC 协议规定的。至于为什么是 2 个 MSL 而不是 1 个 MSL，我还没有看到一个非常满意的解释。</p>
+<p>四次挥手也并不总是四次挥手，中间的两个动作有时候是可以合并一起进行的。</p>
+<p>这个时候就成了三次挥手，主动关闭方就会从 fin_wait_1 状态直接进入到 time_wait 状态，跳过了 fin_wait_2 状态。 </p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/TCP/" rel="tag"><i class="fas fa-tags"></i>TCP</a>
+        
+        <a class="post-tag button" href="/tags/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/" rel="tag"><i class="fas fa-tags"></i>三次握手四次挥手</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2020/01/02/Disruptor-%E8%AF%A6%E8%A7%A3/" rel="next" title="Disruptor——详解"><i class="fas fa-angle-left"></i><span class="nav-title">Disruptor——详解</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2020/01/03/Webpack%E8%AF%A6%E8%A7%A3/" rel="prev" title="Webpack详解"><span class="nav-title">Webpack详解</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="ZGY">
+  
+  <h1 class="author-name">ZGY</h1>
+  <h2 class="author-description">不逼逼自己，都不知道自己到底有多LOW！(¬､¬)</h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">16</a></div>
+    </div>
+    
+    
+    
+    <div class="categories-count count-block">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">13</a></div>
+    </div>
+    
+    
+    
+    <div class="tags-count count-block">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">24</a></div>
+    </div>
+    
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#TCP-三次握手"><span class="toc-text">TCP 三次握手</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#TCP-数据传输"><span class="toc-text">TCP 数据传输</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#TCP-四次挥手"><span class="toc-text">TCP 四次挥手</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:3030392760@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/zgysyy" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">ZGY</span><span class="year"><i class="far fa-copyright"></i>2019年12月31日 - 2020</span><span class="creative-commons"><i class="fab fa-creative-commons"></i><a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">BY-NC-ND 4.0</a></span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

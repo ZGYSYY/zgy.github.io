@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="ZGYSYY, 我不是老司机, 后端开发, Java技术文章, Spring, SpringCloud, JVM调优, 程序员, 高并发编程, IT网站, 分布式, 中间件, 微服务, 个人技术博客">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="我不是老司机" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Linux常用命令总结 | 我不是老司机 - I am not an old driver ! </title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">我不是老司机</a></h1>
+        <h2 class="subtitle">I am not an old driver ! </h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
+        
+        <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">关于</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="https://zgysyy.github.io/2020/01/03/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="ZGY">
+       <meta itemprop="description" content="不逼逼自己，都不知道自己到底有多LOW！(¬､¬)">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="我不是老司机">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Linux常用命令总结</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-01-03T11:23:37+08:00">2020-01-03 11:23:37</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%90%8E%E7%AB%AF/%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">系统</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%90%8E%E7%AB%AF/%E7%B3%BB%E7%BB%9F/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <h1 id="yum常用命令"><a href="#yum常用命令" class="headerlink" title="yum常用命令"></a>yum常用命令</h1><ul>
+<li>yum install 【软件包名】[-y]：安装指定的软件包，如果加上<code>-y</code>表示不询问安装。</li>
+<li>yum remove 【软件包名】[-y]：删除指定软件包，如果加上<code>-y</code>表示不询问删除。</li>
+<li>yum list installed：列出所用安装过的软件，可以配合<code>|</code>和<code>grep</code>命令做过滤。</li>
+<li>yum list：列出所用软件，可以配合<code>|</code>和<code>grep</code>命令做过滤。</li>
+<li>yum search 【软件包名】：查找指定的软件包。</li>
+<li>yum clean all：删除缓存。</li>
+<li>yum update ：更新所用的软件包，如果后面添加【软件包名】就是更新指定的软件包。</li>
+</ul>
+<a id="more"></a>
+
+<h1 id="rpm命令"><a href="#rpm命令" class="headerlink" title="rpm命令"></a>rpm命令</h1><ul>
+<li>rpm -e 【软件包名】：删除软件包。</li>
+<li>rpm -ivh 【软件包名】：安装指定软件包。</li>
+<li>rpm -Uvh 【软件包名】：更新指定软件包。</li>
+<li>rpm -Uvh –oldpackage 【软件包名】：软甲包降级。</li>
+<li>rpm -qa 【软件包名】：查找指定软件，可以配合<code>|</code>和<code>grep</code>命令做过滤。</li>
+<li>rpm -ql 【软件包名】：查看软件安装的路径。</li>
+</ul>
+<h1 id="systemctl命令"><a href="#systemctl命令" class="headerlink" title="systemctl命令"></a>systemctl命令</h1><p>systemctl命令是系统服务管理器指令，它实际上将 service 和 chkconfig 这两个命令组合到一起。</p>
+<table>
+    <tr>
+        <th>任务</th>
+        <th>旧指令</th>
+        <th>新指令</th>
+    </tr>
+    <tr>
+        <td>使某服务自动启动</td>
+        <td>chkconfig --level 3 httpd on</td>
+        <td>systemctl enable httpd.service</td>
+    </tr>
+    <tr>
+        <td>使某服务不自动启动</td>
+        <td>chkconfig --level 3 httpd off</td>
+        <td>systemctl disable httpd.service</td>
+    </tr>
+    <tr>
+        <td>检查服务状态</td>
+        <td>service httpd status</td>
+        <td>systemctl status httpd.service （服务详细信息） systemctl is-active httpd.service （仅显示是否 Active)</td>
+    </tr>
+    <tr>
+        <td>显示所有已启动的服务</td>
+        <td>chkconfig --list</td>
+        <td>systemctl list-units --type=service</td>
+    </tr>
+    <tr>
+        <td>启动某服务</td>
+        <td>service httpd start</td>
+        <td>systemctl start httpd.service</td>
+    </tr>
+     <tr>
+        <td>停止某服务</td>
+        <td>service httpd stop</td>
+        <td>systemctl stop httpd.service</td>
+    </tr>
+     <tr>
+        <td>重启某服务</td>
+        <td>service httpd restart</td>
+        <td>systemctl restart httpd.service</td>
+    </tr>
+    <tr>
+        <td>查看自启服务</td>
+        <td>--</td>
+        <td>systemctl list-unit-files</td>
+    </tr>
+</table>
+
+<h1 id="curl命令"><a href="#curl命令" class="headerlink" title="curl命令"></a>curl命令</h1><ul>
+<li>curl -o 【文件名】url：将指定的url资源下载到指定的文件中。</li>
+<li>curl -L url：如果指定的url返回重定向，将跳转重定向地址，如果不加<code>L</code>将不回重定向。</li>
+</ul>
+<h1 id="ln命令"><a href="#ln命令" class="headerlink" title="ln命令"></a>ln命令</h1><ul>
+<li>ln -s 【源文件】 【目标文件】：给源文件创建一个软连接到目标文件。</li>
+</ul>
+<p>更多详情，参考以下链接：</p>
+<p><a href="https://www.cnblogs.com/kex1n/p/5193826.html" target="_blank" rel="noopener">linux 创建连接命令 ln -s 软链接</a></p>
+<h1 id="wget命令"><a href="#wget命令" class="headerlink" title="wget命令"></a>wget命令</h1><ul>
+<li>wget -O 【文件名】 url：将指定的url资源下载到指定的文件中。</li>
+</ul>
+<p>更多详情，参考以下链接：</p>
+<p><a href="https://www.cnblogs.com/peida/archive/2013/03/18/2965369.html" target="_blank" rel="noopener">wget命令详解</a></p>
+<h1 id="CentOS关闭SELinux"><a href="#CentOS关闭SELinux" class="headerlink" title="CentOS关闭SELinux"></a>CentOS关闭SELinux</h1><p>查看SELinux状态</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sestatus  -v<br></code></pre></td></tr></table></figure>
+
+<p>临时关闭</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">setenforce 0<br></code></pre></td></tr></table></figure>
+
+<p>永久关闭</p>
+<p>修改/etc/selinux/config文件中的SELINUX=”enforcing” 为 disabled ，然后重启。</p>
+<h1 id="CentOS7如何设置防火墙"><a href="#CentOS7如何设置防火墙" class="headerlink" title="CentOS7如何设置防火墙"></a>CentOS7如何设置防火墙</h1><p>在旧版本的CentOS中，是使用 iptables 命令来设置防火墙的。但是，从CentOS7开始，默认就没有安装iptables，而是改用firewall来配置防火墙。</p>
+<p>firewall的配置文件是以xml的格式，存储在 /usr/lib/firewalld/ 和 /etc/firewalld/ 目录中。</p>
+<p><strong>系统配置目录</strong></p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">/usr/lib/firewalld/<br>/usr/lib/firewalld/services<br>/usr/lib/firewalld/zones<br></code></pre></td></tr></table></figure>
+
+<p><strong>用户配置目录</strong></p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">/etc/firewalld/<br>/etc/firewalld/services<br>/etc/firewalld/zones<br></code></pre></td></tr></table></figure>
+
+<p><strong>设置防火墙</strong></p>
+<p>设置防火墙的方式有两种：firewall命令和直接修改配置文件。</p>
+<p>推荐使用firewall命令来设置防火墙。</p>
+<p>注意： 对防火墙所做的更改，必须重启防火墙服务，才会立即生效。命令如下：</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">service firewalld restart 或 systemctl restart firewalld<br></code></pre></td></tr></table></figure>
+
+<h2 id="设置防火墙的方式有两种"><a href="#设置防火墙的方式有两种" class="headerlink" title="设置防火墙的方式有两种"></a>设置防火墙的方式有两种</h2><h3 id="1-firewall命令"><a href="#1-firewall命令" class="headerlink" title="1. firewall命令"></a>1. firewall命令</h3><figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 对外开放3306端口，供外部的计算机访问</span><br><span class="hljs-comment"># 该命令方式添加的端口，可在/etc/firewalld/zones中的对应配置文件中得到体现</span><br>firewall-cmd --zone=public --add-port=3306/tcp --permanent<br><br><span class="hljs-comment"># 查看端口状态</span><br>firewall-cmd --zone=public --query-port=3306/tcp --permanent<br><br><span class="hljs-comment"># 对外关闭3306端口</span><br>firewall-cmd --zone=public --remove-port=3306/tcp --permanent<br><br><span class="hljs-comment"># 重启防火墙</span><br>systemctl restart firewalld<br></code></pre></td></tr></table></figure>
+
+<p><strong>说明</strong></p>
+<ul>
+<li>firewall-cmd：Linux中提供的操作firewall的工具。</li>
+<li>–zone：指定作用域。</li>
+<li>–add-port=80/tcp：添加的端口，格式为：端口/通讯协议。</li>
+<li>–permanent：表示永久生效，没有此参数重启后会失效。</li>
+</ul>
+<p><strong>直接修改配置文件</strong></p>
+<h3 id="2-直接修改配置文件"><a href="#2-直接修改配置文件" class="headerlink" title="2. 直接修改配置文件"></a>2. 直接修改配置文件</h3><p>/etc/firewalld/zones/public.xml 文件的默认内容为：</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">&lt;?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"utf-8"</span>?&gt;<br>&lt;zone&gt;<br>  &lt;short&gt;Public&lt;/short&gt;<br>  &lt;description&gt;For use <span class="hljs-keyword">in</span> public areas. You <span class="hljs-keyword">do</span> not trust the other computers on networks to not harm your computer. Only selected incoming connections are accepted.&lt;/description&gt;<br>  &lt;service name=<span class="hljs-string">"dhcpv6-client"</span>/&gt;<br>  &lt;service name=<span class="hljs-string">"ssh"</span>/&gt;<br>&lt;/zone&gt;<br></code></pre></td></tr></table></figure>
+
+<p>修改该配置文件，来添加3306端口。修改后的内容为：</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">&lt;?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"utf-8"</span>?&gt;<br>&lt;zone&gt;<br>  &lt;short&gt;Public&lt;/short&gt;<br>  &lt;description&gt;For use <span class="hljs-keyword">in</span> public areas. You <span class="hljs-keyword">do</span> not trust the other computers on networks to not harm your computer. Only selected incoming connections are accepted.&lt;/description&gt;<br>  &lt;service name=<span class="hljs-string">"dhcpv6-client"</span>/&gt;<br>  &lt;service name=<span class="hljs-string">"ssh"</span>/&gt;<br>  &lt;port protocol=<span class="hljs-string">"tcp"</span> port=<span class="hljs-string">"3306"</span>/&gt;<br>&lt;/zone&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="firewall常用命令"><a href="#firewall常用命令" class="headerlink" title="firewall常用命令"></a>firewall常用命令</h2><h3 id="1-查看firewall的状态"><a href="#1-查看firewall的状态" class="headerlink" title="1. 查看firewall的状态"></a>1. 查看firewall的状态</h3><figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">service firewalld status<br>或<br>systemctl status firewalld<br>或<br>firewall-cmd --state<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-启动、停止、重启"><a href="#2-启动、停止、重启" class="headerlink" title="2. 启动、停止、重启"></a>2. 启动、停止、重启</h3><figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 启动</span><br>service firewalld start<br>或<br>systemctl start firewalld<br><br><span class="hljs-comment"># 停止</span><br>service firewalld stop<br>或<br>systemctl stop firewalld<br><br><span class="hljs-comment"># 重启</span><br>service firewalld restart<br>或<br>systemctl restart firewalld<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-开机自启动的关闭与开启"><a href="#3-开机自启动的关闭与开启" class="headerlink" title="3. 开机自启动的关闭与开启"></a>3. 开机自启动的关闭与开启</h3><figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 关闭开机自启动</span><br>systemctl <span class="hljs-built_in">disable</span> firewalld<br><br><span class="hljs-comment"># 开启开机自启动</span><br>systemctl <span class="hljs-built_in">enable</span> firewalld<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-查看防火墙的规则"><a href="#4-查看防火墙的规则" class="headerlink" title="4. 查看防火墙的规则"></a>4. 查看防火墙的规则</h3><figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">firewall-cmd --list-all<br></code></pre></td></tr></table></figure>
+
+<h2 id="将CentOS7更改为iptables防火墙"><a href="#将CentOS7更改为iptables防火墙" class="headerlink" title="将CentOS7更改为iptables防火墙"></a>将CentOS7更改为iptables防火墙</h2><p>CentOS7切换到iptables防火墙，首先应该关闭默认的firewall防火墙并禁止自启动，然后再来安装和启动iptables防火墙。</p>
+<p>操作步骤如下：</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 停止firewall</span><br>systemctl stop firewalld<br><br><span class="hljs-comment"># 禁止firewall的开机自启动</span><br>systemctl <span class="hljs-built_in">disable</span> firewalld<br><br><span class="hljs-comment"># 安装iptables</span><br>yum install iptables-services<br><br><span class="hljs-comment"># 开启iptables</span><br>systemctl start iptables<br><br><span class="hljs-comment"># 启用iptables的自启动</span><br>systemctl <span class="hljs-built_in">enable</span> iptables<br></code></pre></td></tr></table></figure>
+
+<p>之后，就可以在CentOS7中使用iptables配置防火墙。</p>
+<p>允许外部的计算机访问mysql，操作如下：</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 添加3306端口</span><br>iptables -A INPUT -p tcp -dport 3306 -j ACCEPT<br><br><span class="hljs-comment"># 保存当前的防火墙策略</span><br>service iptables save<br><br><span class="hljs-comment"># 重启iptables</span><br>service iptables restart<br></code></pre></td></tr></table></figure>
+
+<h3 id="iptables常用命令："><a href="#iptables常用命令：" class="headerlink" title="iptables常用命令："></a>iptables常用命令：</h3><figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 启动iptables</span><br>service iptables start<br><br><span class="hljs-comment"># 停止iptables</span><br>service iptables stop<br><br><span class="hljs-comment"># 重启iptables</span><br>service iptables restart<br><br><span class="hljs-comment"># 查看iptables的状态</span><br>service iptables status<br></code></pre></td></tr></table></figure>
+
+<p>iptables防火墙，非常重要的两个文件：</p>
+<ul>
+<li>配置文件 /etc/sysconfig/iptables-config</li>
+<li>策略文件 /etc/sysconfig/iptables（默认是不存在的，使用service ipatables save 可以保存当前策略）</li>
+</ul>
+<h3 id="iptables常用参数说明"><a href="#iptables常用参数说明" class="headerlink" title="iptables常用参数说明"></a>iptables常用参数说明</h3><img src="/2020/01/03/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/1568967240839.png" class="">
+
+<p>更多详情，参考以下链接：</p>
+<ul>
+<li><a href="https://www.cnblogs.com/stulzq/p/9808504.html" target="_blank" rel="noopener">Centos7 防火墙 firewalld 实用操作</a></li>
+<li><a href="https://blog.51cto.com/andyxu/2137046" target="_blank" rel="noopener">firewalld防火墙详解</a></li>
+<li><a href="https://www.91yun.co/archives/1690" target="_blank" rel="noopener">iptables详解</a></li>
+<li><a href="cnblogs.com/grimm/p/10345693.html">细说firewalld和iptables</a></li>
+<li><a href="https://www.linuxprobe.com/chapter-08.html" target="_blank" rel="noopener">firewalld和iptables详解</a></li>
+</ul>
+<h1 id="端口占用查询"><a href="#端口占用查询" class="headerlink" title="端口占用查询"></a>端口占用查询</h1><h2 id="netstat命令"><a href="#netstat命令" class="headerlink" title="netstat命令"></a>netstat命令</h2><p>netstat 命令应用是比较频繁的，比如查看端口占用啦，查看端口进程啦，这些时候都是有必要的。</p>
+<p>netstat命令各个参数说明如下：</p>
+<p>　　-t : 指明显示TCP端口</p>
+<p>　　-u : 指明显示UDP端口</p>
+<p>　　-l : 仅显示监听套接字(所谓套接字就是使应用程序能够读写与收发通讯协议(protocol)与资料的程序)</p>
+<p>　　-p : 显示进程标识符和程序名称，每一个套接字/端口都属于一个程序。</p>
+<p>　　-n : 不进行DNS轮询，显示IP(可以加速操作)</p>
+<p>常用命令如下：</p>
+<p>查看所有TCP端口</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">netstat -ntlp<br></code></pre></td></tr></table></figure>
+
+<p>查看所有端口</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">netstat -ntulp<br></code></pre></td></tr></table></figure>
+
+<p>查看指定端口的连接数量，比如：80</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">netstat -pnt |grep :80 |wc<br></code></pre></td></tr></table></figure>
+
+<p>更多详情，参考以下链接：</p>
+<p><a href="https://www.cnblogs.com/cxbhakim/p/9353383.html" target="_blank" rel="noopener">linux查看端口状态相关命令</a></p>
+<h1 id="firewalld与docker冲突问题"><a href="#firewalld与docker冲突问题" class="headerlink" title="firewalld与docker冲突问题"></a>firewalld与docker冲突问题</h1><p>在CentOS7中，如果安装有docker，会出现firewalld与docker冲突问题，具体现象为，firewalld中并没有开发端口，但是其它机器依然能够访问docker提供的服务。出现这个问题的原因是因为firewalld和docker的启动顺序造成的，在机器启动后，firewalld服务比docker服务要先启动，在docker服务启动后修改了iptables规则，因为firewalld的底层实现也是基于iptables规则的，导致firewalld服务没有开发的端口，依然能够访问docker提供的服务。</p>
+<p>解决办法有两种，如下</p>
+<ol>
+<li>不用firewalld，改用iptables</li>
+<li>将firewalld服务和docker服务都停止，然后先启动docker服务，过5秒（服务启动存在时间，保证docker完全启动）再启动firewalld服务。</li>
+</ol>
+<h1 id="查看内存使用情况"><a href="#查看内存使用情况" class="headerlink" title="查看内存使用情况"></a>查看内存使用情况</h1><h2 id="top命令"><a href="#top命令" class="headerlink" title="top命令"></a>top命令</h2><p>内容说明如下：</p>
+<ul>
+<li>PID：进程的ID</li>
+<li>USER：进程所有者</li>
+<li>PR：进程的优先级别，越小越优先被执行</li>
+<li>NI：进程Nice值，代表这个进程的优先值</li>
+<li>VIRT：进程占用的虚拟内存</li>
+<li>RES：进程占用的物理内存</li>
+<li>SHR：进程使用的共享内存</li>
+<li>S：进程的状态。S表示休眠，R表示正在运行，Z表示僵死状态</li>
+<li>%CPU：进程占用CPU的使用</li>
+<li>%MEM：进程使用的物理内存和总内存的百分</li>
+<li>TIME+：该进程启动后占用的总的CPU时间，即占用CPU使用时间的累加值</li>
+<li>COMMAND：启动该进程的命令名称</li>
+</ul>
+<h2 id="free命令"><a href="#free命令" class="headerlink" title="free命令"></a>free命令</h2><figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 用KB为单位展示数据</span><br>free<br><span class="hljs-comment"># 用MB为单位展示数据</span><br>free -m<br><span class="hljs-comment"># 用GB为单位展示数据</span><br>free -h<br></code></pre></td></tr></table></figure>
+
+<p>内容说明如下：</p>
+<ul>
+<li>total : 总计屋里内存的大小</li>
+<li>used : 已使用内存的大小</li>
+<li>free : 可用内存的大小</li>
+<li>shared : 多个进程共享的内存总额</li>
+<li>buff/cache : 磁盘缓存大小</li>
+<li>available : 可用内存大小 ， 从应用程序的角度来说：available = free + buff/cache .</li>
+</ul>
+<h2 id="linux可用内存足够为什么还用swap"><a href="#linux可用内存足够为什么还用swap" class="headerlink" title="linux可用内存足够为什么还用swap"></a>linux可用内存足够为什么还用swap</h2><blockquote>
+<p>该部分内容摘抄自：<a href="[http://www.ps-aux.com/linux%E5%8F%AF%E7%94%A8%E5%86%85%E5%AD%98%E8%B6%B3%E5%A4%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E4%BD%BF%E7%94%A8%E4%BA%86swap.html](http://www.ps-aux.com/linux可用内存足够为什么还使用了swap.html)">linux可用内存足够为什么还用swap</a></p>
+</blockquote>
+<h3 id="为什么-buffer-cache-会占用这么多的内存"><a href="#为什么-buffer-cache-会占用这么多的内存" class="headerlink" title="为什么 buffer/cache 会占用这么多的内存?"></a>为什么 <code>buffer/cache</code> 会占用这么多的内存?</h3><p>buffer/cache使用过高通常是程序频繁存取文件后,物理内存会很快被用光,<br>当程序结束后,内存不会被正常释放,而是成为cache状态.<br>通常我们不需要手工释放swap,Linux会自动管理.<br>如果非要释放,请继续看.</p>
+<h3 id="如何释放占用的swap呢"><a href="#如何释放占用的swap呢" class="headerlink" title="如何释放占用的swap呢?"></a>如何释放占用的<code>swap</code>呢?</h3><figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">## 将内存缓冲区数据立刻同步到磁盘</span><br>[root@localhost ~]<span class="hljs-comment"># sync</span><br><span class="hljs-comment">## 关闭所有的swap</span><br>[root@localhost ~]<span class="hljs-comment"># swapoff -a</span><br><span class="hljs-comment">## 启用所有swap</span><br>[root@localhost ~]<span class="hljs-comment"># swapon -a</span><br>[root@localhost ~]<span class="hljs-comment"># free -m</span><br>              total        used        free      shared  buff/cache   available<br>Mem:          31768       10853         217       16740       20698        3658<br>Swap:          8191           0        8191<br></code></pre></td></tr></table></figure>
+
+<h3 id="linux可用内存足够为什么还用swap-1"><a href="#linux可用内存足够为什么还用swap-1" class="headerlink" title="linux可用内存足够为什么还用swap?"></a>linux可用内存足够为什么还用swap?</h3><p>上面可以看到服务器共有32G内存,其中buff/cache占用了21G+.<br>明明还有可以将近12G的内存可以使用.但系统却偏偏占用完了swap的8G内存.<br>可知系统并没有自动释放buff/cache最大化利用内存.</p>
+<p>原因:</p>
+<p>内核参数 swappiness 的值的大小,决定着linux何时开始使用swap。</p>
+<ul>
+<li><code>swappiness=0</code> 时表示尽最大可能的使用物理内存以避免换入到swap.</li>
+<li><code>swappiness＝100</code> 时候表示最大限度使用swap分区，并且把内存上的数据及时的换出到swap空间里面.</li>
+<li>此值linux的基本默认设置为60，不同发行版可能略微不同.</li>
+</ul>
+<p>查看命令具体如下：</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@localhost ~]<span class="hljs-comment"># cat /proc/sys/vm/swappiness</span><br>60<br></code></pre></td></tr></table></figure>
+
+<p>什么意思呢?<br>就是说，你的内存在使用率到40%(100%-60%)的时候，系统就会开始出现有交换分区的使用。<br>大家知道，内存的速度会比磁盘快很多，这样子会加大系统io，同时造的成大量页的换进换出，严重影响系统的性能，所以我们在操作系统层面，要尽可能使用内存，对该参数进行调整。</p>
+<h3 id="调整Swap在什么时候使用"><a href="#调整Swap在什么时候使用" class="headerlink" title="调整Swap在什么时候使用"></a>调整Swap在什么时候使用</h3><p><strong>临时生效</strong></p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@localhost ~]<span class="hljs-comment"># sysctl vm.swappiness=10</span><br>vm.swappiness = 10<br>[root@localhost ~]<span class="hljs-comment"># cat /proc/sys/vm/swappiness</span><br>10<br></code></pre></td></tr></table></figure>
+
+<p><strong>重启依旧生效</strong></p>
+<p>需要在/etc/sysctl.conf修改:</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@localhost ~]<span class="hljs-comment"># cat /etc/sysctl.conf</span><br>vm.swappiness = 10<br>[root@localhost ~]<span class="hljs-comment"># sysctl -p</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="shared内存"><a href="#shared内存" class="headerlink" title="shared内存"></a>shared内存</h3><p>通常我们还经常看到shared占用大量内存,shared表示共享内存的占用,<br>起决定参数的两个分别是:</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 定义单个共享内存段的最大值</span><br>kernel.shmmax = 68719476736   <br><span class="hljs-comment"># 定义共享内存页数</span><br>kernel.shmall = 4194304  <span class="hljs-comment">##(16G)</span><br></code></pre></td></tr></table></figure>
+
+<p>当前系统内存页大小查看:</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@localhost ~]<span class="hljs-comment"># getconf  PAGESIZE</span><br>4096<br></code></pre></td></tr></table></figure>
+
+<p>当前系统共享内存段大小(bytes):</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@localhost ~]<span class="hljs-comment"># cat /proc/sys/kernel/shmmax</span><br>16777216000<br></code></pre></td></tr></table></figure>
+
+<p>共享内存段个数查看:</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@localhost ~]<span class="hljs-comment"># ipcs -m</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="curl命令详解"><a href="#curl命令详解" class="headerlink" title="curl命令详解"></a>curl命令详解</h1><p>curl -fsSL url链接：获取url链接的内容。</p>
+<p>参数详解：</p>
+<ul>
+<li>f：连接失败时不显示http错误。</li>
+<li>s：静默模式。不输出任何东西。</li>
+<li>S：当有错误信息时，显示错误。</li>
+<li>L：当请求放回301（重定向）状态码时，会访问新的网址。</li>
+</ul>
+<h1 id="查看Linux内核与版本"><a href="#查看Linux内核与版本" class="headerlink" title="查看Linux内核与版本"></a>查看Linux内核与版本</h1><ul>
+<li><p>uname -a</p>
+<img src="/2020/01/03/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/1570762324882.png" class="">
+</li>
+<li><p>cat /proc/version</p>
+</li>
+<li><p>lsb_release -a</p>
+</li>
+<li><p>cat /etc/redhat-release，这种方法只适合Redhat系的Linux。</p>
+</li>
+<li><p>cat /etc/issue，这种方法通用。</p>
+</li>
+</ul>
+<h1 id="Ubuntu-环境变量设置方法"><a href="#Ubuntu-环境变量设置方法" class="headerlink" title="Ubuntu 环境变量设置方法"></a>Ubuntu 环境变量设置方法</h1><h2 id="对所有用户生效，永久的"><a href="#对所有用户生效，永久的" class="headerlink" title="对所有用户生效，永久的"></a>对所有用户生效，永久的</h2><ul>
+<li><p>在/etc/profile文件中添加变量</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 打开文件 (以设置java环境为例)</span><br>vi /etc/profile<br><span class="hljs-comment"># 在文末加入 </span><br>  <span class="hljs-comment"># 注意：1）linux用冒号“:”来分隔路径, windows用分号;来分割</span><br>	   <span class="hljs-comment"># 2）CLASSPATH中当前目录“.”不能丢,把当前目录丢掉也是常见的错误。</span><br>	   <span class="hljs-comment"># 3) export是把这变量导出为全局变量。</span><br>	   <span class="hljs-comment"># 4) 严格区分大小写。</span><br><span class="hljs-built_in">export</span> JAVA_HOME=/usr/share/jdk1.8.0_05<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$JAVA_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br><span class="hljs-built_in">export</span> CLASSPATH=./JAVA_HOME/lib:<span class="hljs-variable">$JAVA_HOME</span>/jre/lib<br><span class="hljs-comment"># 生效</span><br><span class="hljs-built_in">source</span> /etc/profile<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>在/etc/environment 中添加变量</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># enviroment文件比较不同, 原文件应为PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games" 的形式</span><br><span class="hljs-comment"># 直接在后面加上冒号和路径即可</span><br>PATH=<span class="hljs-string">"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/etc/apache/bin"</span><br>PRESTO=<span class="hljs-string">"/home/zhen/software/PRESTO/presto"</span><br></code></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="对单一用户生效，永久的"><a href="#对单一用户生效，永久的" class="headerlink" title="对单一用户生效，永久的"></a>对单一用户生效，永久的</h2><ul>
+<li><p>修改/etc/bash.bashrc</p>
+</li>
+<li><p>修改~/.bashrc</p>
+</li>
+<li><p>修改~/.profile （有时候是 ~/.bash_profile，或者 ~/.bash_login）</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 与 /etc/profile 文件的添加方法相同</span><br></code></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="只对当前shell有效，临时的"><a href="#只对当前shell有效，临时的" class="headerlink" title="只对当前shell有效，临时的"></a>只对当前shell有效，临时的</h2><ul>
+<li><p>直接运行export命令定义变量</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 注意：＝ 即等号两边不能有任何空格</span><br><span class="hljs-built_in">export</span> SCHED=/home/zhen/software/sched_11.4<br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:/etc/apache/bin<br><span class="hljs-built_in">export</span> PATH=/etc/apache/bin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong>使得设置立即生效</strong></p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># for sys</span><br><span class="hljs-built_in">source</span> /etc/environment<br><span class="hljs-comment"># for all users</span><br><span class="hljs-built_in">source</span> /etc/profile<br><span class="hljs-comment"># for single user</span><br><span class="hljs-built_in">source</span> ~/.bashrc<br><span class="hljs-comment"># or logout the system.</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>参考链接如下</strong>：</p>
+<blockquote>
+<p><a href="http://zhaozhen.me/2017/09/15/ubuntu-evm.html" target="_blank" rel="noopener">Ubuntu 环境变量设置方法</a></p>
+</blockquote>
+<h1 id="关于ubuntu的sources-list总结"><a href="#关于ubuntu的sources-list总结" class="headerlink" title="关于ubuntu的sources.list总结"></a>关于ubuntu的sources.list总结</h1><h2 id="一、作用"><a href="#一、作用" class="headerlink" title="一、作用"></a>一、作用</h2><p>   文件/etc/apt/sources.list是一个普通可编辑的文本文件，保存了ubuntu软件更新的源服务器的地址。和sources.list功能一样的是/etc/apt/sources.list.d/<em>.list(*代表一个文件名，只能由字母、数字、下划线、英文句号组成)。sources.list.d目录下的</em>.list文件为在单独文件中写入源的地址提供了一种方式，通常用来安装第三方的软件。</p>
+<figure class="hljs highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs awk">deb http:<span class="hljs-regexp">//</span>archive.ubuntu.com<span class="hljs-regexp">/ubuntu/</span> trusty main restricted universe multiverse<br>deb http:<span class="hljs-regexp">//</span>archive.ubuntu.com<span class="hljs-regexp">/ubuntu/</span> trusty-security main restricted universe multiverse<br>deb http:<span class="hljs-regexp">//</span>archive.ubuntu.com<span class="hljs-regexp">/ubuntu/</span> trusty-updates main restricted universe multiverse<br>deb http:<span class="hljs-regexp">//</span>archive.ubuntu.com<span class="hljs-regexp">/ubuntu/</span> trusty-proposed main restricted universe multiverse<br>deb http:<span class="hljs-regexp">//</span>archive.ubuntu.com<span class="hljs-regexp">/ubuntu/</span> trusty-backports main restricted universe multiverse<br>deb-src http:<span class="hljs-regexp">//</span>archive.ubuntu.com<span class="hljs-regexp">/ubuntu/</span> trusty main restricted universe multiverse<br>deb-src http:<span class="hljs-regexp">//</span>archive.ubuntu.com<span class="hljs-regexp">/ubuntu/</span> trusty-security main restricted universe multiverse<br>deb-src http:<span class="hljs-regexp">//</span>archive.ubuntu.com<span class="hljs-regexp">/ubuntu/</span> trusty-updates main restricted universe multiverse<br>deb-src http:<span class="hljs-regexp">//</span>archive.ubuntu.com<span class="hljs-regexp">/ubuntu/</span> trusty-proposed main restricted universe multiverse<br>deb-src http:<span class="hljs-regexp">//</span>archive.ubuntu.com<span class="hljs-regexp">/ubuntu/</span> trusty-backports main restricted universe multiverse<br></code></pre></td></tr></table></figure>
+
+<p>   如上是ubuntu官方sources.list文件内容，具体地含义如下：</p>
+<p>   每一行的开头是deb或者deb-src，分别表示直接通过.deb文件进行安装和通过源文件的方式进行安装。</p>
+<p>   deb或者deb-src字段之后，是一段URL，之后是五个用空格隔开的字符串，分别对应相应的目录结构。在浏览器中输入<a href="http://archive.ubuntu.com/ubuntu/，并进入dists目录，可以发现有5个目录和前述sources.list文件中的第三列字段相对应。任选其中一个目录进入，可以看到和sources.list后四列相对应的目录结构。" target="_blank" rel="noopener">http://archive.ubuntu.com/ubuntu/，并进入dists目录，可以发现有5个目录和前述sources.list文件中的第三列字段相对应。任选其中一个目录进入，可以看到和sources.list后四列相对应的目录结构。</a></p>
+<p>更多内容可以使用man source.list获得。</p>
+<img src="/2020/01/03/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/051605496117149.png" class="">
+<img src="/2020/01/03/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/051606162679773.png" class="">
+
+
+
+<h2 id="二、源的选择"><a href="#二、源的选择" class="headerlink" title="二、源的选择"></a>二、源的选择</h2><p>   ubuntu官方有自身的软件源，直接从官方的软件源获取数据的速度比较慢。而通过国内的一些的源的镜像进行更新一般能够获得比官方源更快的速度，不过不同国内的源的下载速度也会不一样。<a href="http://wiki.ubuntu.org.cn/源列表" target="_blank" rel="noopener">这里</a>给出了较为详细的ubuntu软件源列表，个人现在觉得选取ubuntu软件源的方法是首先选择位于相同地区的源，然后进行ping操作，时延不是太高即可。对比aliyun、sohu、ubuntu官方ping的数据，可以发现aliyun的源在时延上表现最好。</p>
+<img src="/2020/01/03/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/051619280959698.png" class="">
+
+<img src="/2020/01/03/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/051620001422176.png" class="">
+
+<img src="/2020/01/03/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/051620372528304.png" class="">
+
+<h1 id="vim编辑器缩进设置"><a href="#vim编辑器缩进设置" class="headerlink" title="vim编辑器缩进设置"></a>vim编辑器缩进设置</h1><p>在 /etc/vimrc文件中追加如下内容</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-string">" vim 缩进设置<br>set ts=4<br>set expandtab<br>set autoindent</span><br></code></pre></td></tr></table></figure>
+
+<p>ts：表示缩进空格数。</p>
+<p>expandtab：表示按退格键时，按一次删除一个空格。</p>
+<p>autoindent：表示开启自动缩进。</p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/Linux/" rel="tag"><i class="fas fa-tags"></i>Linux</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2020/01/03/iptables%E8%87%AA%E5%AE%9A%E4%B9%89%E9%93%BE/" rel="next" title="iptables自定义链"><i class="fas fa-angle-left"></i><span class="nav-title">iptables自定义链</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2020/01/03/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E7%AC%94%E8%AE%B0/" rel="prev" title="Docker常用命令笔记"><span class="nav-title">Docker常用命令笔记</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="ZGY">
+  
+  <h1 class="author-name">ZGY</h1>
+  <h2 class="author-description">不逼逼自己，都不知道自己到底有多LOW！(¬､¬)</h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">16</a></div>
+    </div>
+    
+    
+    
+    <div class="categories-count count-block">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">13</a></div>
+    </div>
+    
+    
+    
+    <div class="tags-count count-block">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">24</a></div>
+    </div>
+    
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#yum常用命令"><span class="toc-text">yum常用命令</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#rpm命令"><span class="toc-text">rpm命令</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#systemctl命令"><span class="toc-text">systemctl命令</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#curl命令"><span class="toc-text">curl命令</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#ln命令"><span class="toc-text">ln命令</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#wget命令"><span class="toc-text">wget命令</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#CentOS关闭SELinux"><span class="toc-text">CentOS关闭SELinux</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#CentOS7如何设置防火墙"><span class="toc-text">CentOS7如何设置防火墙</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#设置防火墙的方式有两种"><span class="toc-text">设置防火墙的方式有两种</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#1-firewall命令"><span class="toc-text">1. firewall命令</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#2-直接修改配置文件"><span class="toc-text">2. 直接修改配置文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#firewall常用命令"><span class="toc-text">firewall常用命令</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#1-查看firewall的状态"><span class="toc-text">1. 查看firewall的状态</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#2-启动、停止、重启"><span class="toc-text">2. 启动、停止、重启</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#3-开机自启动的关闭与开启"><span class="toc-text">3. 开机自启动的关闭与开启</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#4-查看防火墙的规则"><span class="toc-text">4. 查看防火墙的规则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#将CentOS7更改为iptables防火墙"><span class="toc-text">将CentOS7更改为iptables防火墙</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#iptables常用命令："><span class="toc-text">iptables常用命令：</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#iptables常用参数说明"><span class="toc-text">iptables常用参数说明</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#端口占用查询"><span class="toc-text">端口占用查询</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#netstat命令"><span class="toc-text">netstat命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#firewalld与docker冲突问题"><span class="toc-text">firewalld与docker冲突问题</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#查看内存使用情况"><span class="toc-text">查看内存使用情况</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#top命令"><span class="toc-text">top命令</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#free命令"><span class="toc-text">free命令</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#linux可用内存足够为什么还用swap"><span class="toc-text">linux可用内存足够为什么还用swap</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#为什么-buffer-cache-会占用这么多的内存"><span class="toc-text">为什么 buffer&#x2F;cache 会占用这么多的内存?</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#如何释放占用的swap呢"><span class="toc-text">如何释放占用的swap呢?</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#linux可用内存足够为什么还用swap-1"><span class="toc-text">linux可用内存足够为什么还用swap?</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#调整Swap在什么时候使用"><span class="toc-text">调整Swap在什么时候使用</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#shared内存"><span class="toc-text">shared内存</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#curl命令详解"><span class="toc-text">curl命令详解</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#查看Linux内核与版本"><span class="toc-text">查看Linux内核与版本</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#Ubuntu-环境变量设置方法"><span class="toc-text">Ubuntu 环境变量设置方法</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#对所有用户生效，永久的"><span class="toc-text">对所有用户生效，永久的</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#对单一用户生效，永久的"><span class="toc-text">对单一用户生效，永久的</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#只对当前shell有效，临时的"><span class="toc-text">只对当前shell有效，临时的</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#关于ubuntu的sources-list总结"><span class="toc-text">关于ubuntu的sources.list总结</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#一、作用"><span class="toc-text">一、作用</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#二、源的选择"><span class="toc-text">二、源的选择</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#vim编辑器缩进设置"><span class="toc-text">vim编辑器缩进设置</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:3030392760@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/zgysyy" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">ZGY</span><span class="year"><i class="far fa-copyright"></i>2019年12月31日 - 2020</span><span class="creative-commons"><i class="fab fa-creative-commons"></i><a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">BY-NC-ND 4.0</a></span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

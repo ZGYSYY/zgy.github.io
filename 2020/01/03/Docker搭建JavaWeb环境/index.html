@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="ZGYSYY, 我不是老司机, 后端开发, Java技术文章, Spring, SpringCloud, JVM调优, 程序员, 高并发编程, IT网站, 分布式, 中间件, 微服务, 个人技术博客">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="我不是老司机" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Docker搭建JavaWeb环境 | 我不是老司机 - I am not an old driver ! </title>
+  <meta name="generator" content="Hexo 4.2.0"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">我不是老司机</a></h1>
+        <h2 class="subtitle">I am not an old driver ! </h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
+        
+        <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">关于</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="https://zgysyy.github.io/2020/01/03/Docker%E6%90%AD%E5%BB%BAJavaWeb%E7%8E%AF%E5%A2%83/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="ZGY">
+       <meta itemprop="description" content="不逼逼自己，都不知道自己到底有多LOW！(¬､¬)">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="我不是老司机">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Docker搭建JavaWeb环境</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-01-03T11:38:02+08:00">2020-01-03 11:38:02</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%90%8E%E7%AB%AF/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p><a href="/download/Docker搭建JavaWeb环境/source.rar">本教程用到的资源，点击下载</a></p>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ul>
+<li>CentOS7.5</li>
+<li>必须有root权限</li>
+</ul>
+<a id="more"></a>
+
+<h1 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h1><p><a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank" rel="noopener">docker CentOS安装文档</a></p>
+<ol>
+<li><p>安装一些工具和驱动 <code>yum install -y yum-utils device-mapper-persistent-data lvm2</code></p>
+</li>
+<li><p>添加yum源 <code>yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</code></p>
+</li>
+<li><p>安装docker <code>yum install docker-ce</code></p>
+</li>
+<li><p>验证docker是否安装成功 <code>docker -v</code></p>
+</li>
+<li><p>如果步骤4成功，启动docker <code>sytemctl start docker</code></p>
+</li>
+<li><p>配置镜像加速器</p>
+<figure class="hljs highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo mkdir -p /etc/docker<br>sudo tee /etc/docker/daemon.json &lt;&lt;-<span class="hljs-string">'EOF'</span><br>&#123;<br>  <span class="hljs-string">"registry-mirrors"</span>: [<span class="hljs-string">"https://jtpbxytq.mirror.aliyuncs.com"</span>]<br>&#125;<br>EOF<br>sudo systemctl daemon-reload<br>sudo systemctl restart docker<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>运行一个docker测试 <code>docker run hello-world</code></p>
+</li>
+<li><p>可以自行百度，安装一个docker命令自动补全的工具（非必须）</p>
+</li>
+</ol>
+<h1 id="安装数据库-mariadb"><a href="#安装数据库-mariadb" class="headerlink" title="安装数据库-mariadb"></a>安装数据库-mariadb</h1><ol>
+<li><p>搜索镜像，<code>docker search mariadb</code></p>
+</li>
+<li><p>拉取镜像，<code>docker pull mariadb</code></p>
+</li>
+<li><p>创建容器，<code>docker run -tid --name mariadb -p 7788:3306 -e MYSQL_ROOT_PASSWORD=root -v /usr/mariadb/:/var/lib/mysql mariadb</code></p>
+<p><strong>注意：</strong>/var/lib/mysql 这个是不变的，这是容器中的数据库文件位置。</p>
+</li>
+<li><p>连接数据库</p>
+</li>
+</ol>
+<h1 id="制作java运行环境进行"><a href="#制作java运行环境进行" class="headerlink" title="制作java运行环境进行"></a>制作java运行环境进行</h1><ol>
+<li><p>到jdk官网下载server-jre，并上传到Linux服务器中</p>
+<p><a href="https://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html" target="_blank" rel="noopener">server-jre下载</a></p>
+</li>
+<li><p>编写Dockerfile文件</p>
+<figure class="hljs highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># 基于frolvlad/alpine-glibc镜像</span><br><span class="hljs-keyword">FROM</span> frolvlad/alpine-glibc<br><br><span class="hljs-comment"># 作者</span><br>MAINTAINER ZGY &lt;3030392760@qq.com&gt;<br><br><span class="hljs-comment"># 在容器中更新软件包并安装tzdata（一款管理时间的软件），然后设置运行环境时间与宿主机相同</span><br><span class="hljs-builtin-name">RUN</span> apk update &amp;&amp; apk <span class="hljs-builtin-name">add</span> tzdata &amp;&amp; cp -rf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime<br><br><span class="hljs-comment"># 在容器中创建jar运行目录</span><br><span class="hljs-builtin-name">RUN</span> mkdir -p /apps<br><br><span class="hljs-comment"># 将宿主机中的server-jar包复制到容器中，并解压</span><br><span class="hljs-builtin-name">ADD</span> ./server-jre-8u191-linux-x64.tar.gz /usr/local/<br><br><span class="hljs-comment"># 设置环境变量</span><br>EVN JAVA_HOME /usr/local/jdk1.8.0_191<br>EVN JAVA_OPTS <span class="hljs-string">"-server -Xms512M -Xmx1024M"</span><br>EVN CLASSPATH <span class="hljs-variable">$JAVA_HOME</span>/bin<br>EVN PATH <span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$JAVA_HOME</span>/bin<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>创建镜像</p>
+<p><strong>注意：</strong>需要进入Dockerfile文件和jar包对应的目录中，运行下面的命令</p>
+<p><code>docker build -t zgy/demo .</code></p>
+</li>
+<li><p>运行容器</p>
+<p><code>docker run -tid --name zgy.demo zgy/demo</code></p>
+</li>
+</ol>
+<p>参考链接：</p>
+<ol>
+<li><a href="https://blog.csdn.net/liupeifeng3514/article/details/80418887" target="_blank" rel="noopener">Alpine Linux 中的 apk 命令讲解</a></li>
+<li><a href="https://blog.csdn.net/xie19900123/article/details/81410006" target="_blank" rel="noopener">构建自定义镜像</a></li>
+</ol>
+<h1 id="安装DNS服务器-dnsmasq"><a href="#安装DNS服务器-dnsmasq" class="headerlink" title="安装DNS服务器-dnsmasq"></a>安装DNS服务器-dnsmasq</h1><blockquote>
+<p>什么是dnsmasq？</p>
+<p>DNSmasq是一个小巧且方便地用于配置<a href="https://baike.baidu.com/item/DNS/427444" target="_blank" rel="noopener">DNS</a>和<a href="https://baike.baidu.com/item/DHCP" target="_blank" rel="noopener">DHCP</a>的工具，适用于小型<a href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C/143243" target="_blank" rel="noopener">网络</a>，它提供了DNS功能和可选择的DHCP功能。它服务那些只在本地适用的域名，这些域名是不会在全球的DNS服务器中出现的。DHCP服务器和DNS服务器结合，并且允许DHCP分配的地址能在DNS中正常解析，而这些DHCP分配的地址和相关命令可以配置到每台<a href="https://baike.baidu.com/item/%E4%B8%BB%E6%9C%BA/455151" target="_blank" rel="noopener">主机</a>中，也可以配置到一台核心设备中（比如路由器），DNSmasq支持静态和动态两种DHCP配置方式。 </p>
+</blockquote>
+<ol>
+<li><p>搜索镜像</p>
+<p><code>docker search dnsmasq</code></p>
+</li>
+<li><p>拉取镜像</p>
+<p><code>docker pull dnsmasq</code></p>
+</li>
+<li><p>运行容器</p>
+<p><code>docker run -d -p 53:53/udp -p 53:53/tcp --cap-add=NET_ADMIN -v /usr/dnsmasq:/etc/dnsmasq.d --name dns-server andyshinn/dnsmasq</code></p>
+</li>
+<li><p>修改配置文件，在宿主机的配置文件中添加要解析的域名</p>
+<ol>
+<li><code>vim /user/dnsmasq/dns-zgy.conf</code>，添加如下配置</li>
+</ol>
+<figure class="hljs highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">address=/noobgg.test/<span class="hljs-number">192.168</span><span class="hljs-number">.31</span><span class="hljs-number">.100</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>重启容器</p>
+<p><code>docker restart dns-server</code></p>
+</li>
+<li><p>测试</p>
+<p>在另一台机器上将首选dns改为安装有dnsmasq服务器的ip地址，然后ping noobgg.test，看是否能够ping通，如果能，则安装成功。</p>
+</li>
+</ol>
+<p>参考链接：</p>
+<ol>
+<li><a href="https://www.cnblogs.com/javacspring/p/6172327.html" target="_blank" rel="noopener">解决Docker容器时区及时间不同步问题</a> </li>
+</ol>
+<h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><ol>
+<li><p>搜索镜像</p>
+<p><code>docker search nginx</code></p>
+</li>
+<li><p>拉取镜像</p>
+<p><code>docker pull nginx</code></p>
+</li>
+<li><p>运行容器</p>
+<p><code>docker run -d --name zgy.nginx -p 80:80 -v /usr/nginx/conf/conf.d:/etc/nginx/conf.d -----link zgy.demo nginx</code></p>
+</li>
+<li><p>修改配置文件default.conf，配置如下</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs conf">server &#123;<br>    listen       80;<br>    server_name  noobgg.test;<br><br>    location &#x2F; &#123;<br>        proxy_pass  http:&#x2F;&#x2F;zgy.demo:9090;<br>        root   &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html;<br>        index  index.html index.htm;<br>    &#125;<br><br>    #error_page  404              &#x2F;404.html;<br><br>    # redirect server error pages to the static page &#x2F;50x.html<br>    #<br>    error_page   500 502 503 504  &#x2F;50x.html;<br>    location &#x3D; &#x2F;50x.html &#123;<br>        root   &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>重启容器</p>
+<p><code>docker restart zgy.nginx</code></p>
+</li>
+<li><p>测试</p>
+<p>打开浏览器访问：<a href="http://noobgg.test" target="_blank" rel="noopener">http://noobgg.test</a></p>
+</li>
+</ol>
+<p>参考链接：</p>
+<ol>
+<li><a href="https://blog.csdn.net/subfate/article/details/81396532" target="_blank" rel="noopener">docker容器相互访问</a></li>
+</ol>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/Docker/" rel="tag"><i class="fas fa-tags"></i>Docker</a>
+        
+        <a class="post-tag button" href="/tags/Java/" rel="tag"><i class="fas fa-tags"></i>Java</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2020/01/03/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E7%AC%94%E8%AE%B0/" rel="next" title="Docker常用命令笔记"><i class="fas fa-angle-left"></i><span class="nav-title">Docker常用命令笔记</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2020/01/03/Windows%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="prev" title="Windows常用命令"><span class="nav-title">Windows常用命令</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="ZGY">
+  
+  <h1 class="author-name">ZGY</h1>
+  <h2 class="author-description">不逼逼自己，都不知道自己到底有多LOW！(¬､¬)</h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">16</a></div>
+    </div>
+    
+    
+    
+    <div class="categories-count count-block">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">13</a></div>
+    </div>
+    
+    
+    
+    <div class="tags-count count-block">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">24</a></div>
+    </div>
+    
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#准备"><span class="toc-text">准备</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#安装docker"><span class="toc-text">安装docker</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#安装数据库-mariadb"><span class="toc-text">安装数据库-mariadb</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#制作java运行环境进行"><span class="toc-text">制作java运行环境进行</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#安装DNS服务器-dnsmasq"><span class="toc-text">安装DNS服务器-dnsmasq</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#安装Nginx"><span class="toc-text">安装Nginx</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:3030392760@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/zgysyy" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">ZGY</span><span class="year"><i class="far fa-copyright"></i>2019年12月31日 - 2020</span><span class="creative-commons"><i class="fab fa-creative-commons"></i><a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">BY-NC-ND 4.0</a></span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>
